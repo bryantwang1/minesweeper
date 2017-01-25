@@ -3,5 +3,6 @@ export class Board {
   public time: number;
   public clickNumber: number;
 
+
   constructor(public mineNumber: number, public xSize: number, public ySize: number) {}
 }

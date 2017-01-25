@@ -57,26 +57,65 @@ export class GameService {
     }
   }
 
+  countFlags(clickedTile: Tile, board: Board) {
+    var flagCount: number = 0;
+
+    for(var i=clickedTile.yPos-1;i<clickedTile.yPos+2;i++) {
+      for(var d=clickedTile.xPos-1;d<clickedTile.xPos+2;d++) {
+        if(i >= 0 && d >= 0 && i <= board.ySize-1 && d <= board.xSize-1) {
+          if(board.grid[i][d].flagHere) {
+            flagCount++;
+          }        
+        }
+      }
+    }
+
+    return flagCount;
+  }
+
+  revealSurroundings(clickedTile: Tile, board: Board) {
+    var flagCount: number = this.countFlags(clickedTile, board);
+    console.log("mines: " + clickedTile.mineNumber + ", flags: " + flagCount);
+    if(clickedTile.mineNumber === flagCount) {
+      for(var i=clickedTile.yPos-1;i<clickedTile.yPos+2;i++) {
+        for(var d=clickedTile.xPos-1;d<clickedTile.xPos+2;d++) {
+          if(i >= 0 && d >= 0 && i <= board.ySize-1 && d <= board.xSize-1) {
+            if(!board.grid[i][d].mineHere) {
+              console.log("enter crazier");
+              board.grid[i][d].clicked = true;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // if(board.grid[i][d].mineNumber === 0) {
+  //   checkTiles.push(board.grid[i][d]);
+  // }
+
   clickTile(clickedTile: Tile, board: Board) {
     if(!clickedTile.clicked) {
       clickedTile.clicked = true;
     } else {
       if(!clickedTile.mineHere && clickedTile.clicked) {
+        var checkTiles: Tile[] = [];
         console.log("enter crazy");
-        for(var i=clickedTile.yPos-1;i<clickedTile.yPos+2;i++) {
-          console.log("crazy 1");
-          for(var d=clickedTile.xPos-1;d<clickedTile.xPos+2;d++) {
-            console.log("crazy 2");
-            if(i >= 0 && d >= 0 && i <= board.ySize-1 && d <= board.xSize-1) {
-              console.log("crazy 3");
-              console.log("crazy 3: " + board.grid[i][d]);
-              if(!board.grid[i][d].mineHere) {
-                console.log("enter crazier");
-                board.grid[i][d].clicked = true;
+        this.revealSurroundings(clickedTile, board);
+        console.log("crazy arrays: " + checkTiles);
+        for(let tile of checkTiles) {
+          for(var i=tile.yPos-1;i<tile.yPos+2;i++) {
+            for(var d=tile.xPos-1;d<tile.xPos+2;d++) {
+              if(i >= 0 && d >= 0 && i <= board.ySize-1 && d <= board.xSize-1) {
+                if(!board.grid[i][d].mineHere) {
+                  console.log("enter craziest");
+                  board.grid[i][d].clicked = true;
+                }
               }
             }
           }
         }
+
       }
     }
   }
