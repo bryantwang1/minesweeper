@@ -1,20 +1,57 @@
 <body oncontextmenu="return false">
   <h1>Beginner Difficulty</h1>
   <div class="center">
-    <div *ngFor="let row of board.grid">
-      <div class="game-row">
-        <div *ngFor="let tile of row">
-          <div *ngIf="!tile.clicked" class="btn btn-default game-button" (click)="clickTile(tile)" (mouseup)="rightClick($event, tile)">
-            <div *ngIf="tile.flagHere"><i class="fa fa-flag" aria-hidden="true"></i></div>
-            <div *ngIf="tile.questionHere"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
-          </div>
-          <div *ngIf="tile.clicked" class="game-tile" (click)="clickTile(tile)">
-            <i class="fa fa-bomb" aria-hidden="true" *ngIf="tile.mineHere"></i>
-            <div *ngIf="!tile.mineHere">
-              <p *ngIf="tile.mineNumber > 0">
-                {{tile.mineNumber}}
-              </p>
+
+    <div *ngIf="!gameOver">
+      <div *ngFor="let row of board.grid">
+        <div class="game-row">
+          <div *ngFor="let tile of row">
+            <div *ngIf="!tile.clicked" class="btn btn-default game-button" (click)="clickTile(tile)" (mouseup)="rightClick($event, tile)">
+              <div *ngIf="tile.flagHere"><i class="fa fa-flag" aria-hidden="true"></i></div>
+              <div *ngIf="tile.questionHere"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
             </div>
+            <div *ngIf="tile.clicked" class="game-tile" (click)="clickTile(tile)">
+              <i class="fa fa-bomb" aria-hidden="true" *ngIf="tile.mineHere"></i>
+              <div *ngIf="!tile.mineHere">
+                <p *ngIf="tile.mineNumber > 0">
+                  {{tile.mineNumber}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="gameOver">
+      <h1>Game over, man! Game over!</h1>
+      <div *ngFor="let row of board.grid">
+        <div class="game-row">
+          <div *ngFor="let tile of row">
+            <div *ngIf="!tile.clicked" class="btn btn-default game-button">
+              <div *ngIf="tile.flagHere"><i class="fa fa-flag" aria-hidden="true"></i></div>
+              <div *ngIf="tile.questionHere"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
+            </div>
+
+            <div *ngIf="tile.clicked" class="game-tile">
+
+              <div *ngIf="!tile.gameEnder">
+                <i class="fa fa-bomb" aria-hidden="true" *ngIf="tile.mineHere"></i>
+              </div>
+              <div *ngIf="tile.gameEnder">
+                <div class="end-bg">
+                  <i class="fa fa-bomb" aria-hidden="true" *ngIf="tile.mineHere"></i>
+                </div>
+              </div>
+
+              <div *ngIf="!tile.mineHere">
+                <p *ngIf="tile.mineNumber > 0">
+                  {{tile.mineNumber}}
+                </p>
+              </div>
+
+            </div>
+
           </div>
         </div>
       </div>

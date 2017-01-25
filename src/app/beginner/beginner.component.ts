@@ -10,7 +10,7 @@ import { Board } from './../board.model';
 })
 export class BeginnerComponent implements OnInit {
   board: Board;
-  whatClick;
+  gameOver: boolean = false;
 
   constructor(private gameService: GameService) { }
 
@@ -23,6 +23,11 @@ export class BeginnerComponent implements OnInit {
 
   clickTile(clickedTile) {
     this.gameService.clickTile(clickedTile, this.board);
+    if(clickedTile.mineHere) {
+      clickedTile.gameEnder = true;
+      this.gameOver = true;
+      this.gameService.endGame(this.board);
+    }
   }
 
   rightClick($event, clickedTile) {

@@ -57,6 +57,16 @@ export class GameService {
     }
   }
 
+  endGame(board: Board) {
+    for(let row of board.grid) {
+      for(let tile of row) {
+        if(tile.mineHere) {
+          tile.clicked = true;
+        }
+      }
+    }
+  }
+
   countFlags(clickedTile: Tile, board: Board) {
     var flagCount: number = 0;
 
@@ -65,7 +75,7 @@ export class GameService {
         if(i >= 0 && d >= 0 && i <= board.ySize-1 && d <= board.xSize-1) {
           if(board.grid[i][d].flagHere) {
             flagCount++;
-          }        
+          }
         }
       }
     }

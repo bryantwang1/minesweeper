@@ -47,6 +47,10 @@ h1 {
   margin: 6px;
 }
 
+.game-tile .end-bg {
+  background-color: orange;
+}
+
 i {
   color: red;
 }
