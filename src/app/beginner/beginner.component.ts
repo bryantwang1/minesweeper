@@ -10,6 +10,7 @@ import { Board } from './../board.model';
 })
 export class BeginnerComponent implements OnInit {
   board: Board;
+  whatClick;
 
   constructor(private gameService: GameService) { }
 
@@ -22,5 +23,19 @@ export class BeginnerComponent implements OnInit {
 
   clickTile(clickedTile) {
     clickedTile.clicked = true;
+  }
+
+  rightClick($event, clickedTile) {
+     if($event.which === 3) {
+       if(!clickedTile.flagHere && !clickedTile.questionHere) {
+         clickedTile.flagHere = true;
+       } else if(clickedTile.flagHere === true && !clickedTile.questionHere) {
+         clickedTile.flagHere = false;
+         clickedTile.questionHere = true;
+       } else {
+         clickedTile.flagHere = false;
+         clickedTile.questionHere = false;
+       }
+     }
   }
 }

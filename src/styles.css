@@ -24,6 +24,12 @@ h1 {
   font-size: 20px;
 }
 
+.game-button i {
+  margin: 0;
+  margin-left: -6px;
+  margin-top: -2px;
+}
+
 .game-button:hover {
   background-color: gray;
 }
@@ -35,11 +41,14 @@ h1 {
   background-color: lightgray;
   border: 1px solid darkgray;
   font-size: 18px;
-  color: red;
+}
+
+.game-tile i {
+  margin: 6px;
 }
 
 i {
-  margin: 6px;
+  color: red;
 }
 
 .game-tile p {
