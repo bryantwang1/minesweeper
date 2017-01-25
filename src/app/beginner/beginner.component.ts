@@ -17,4 +17,8 @@ export class BeginnerComponent implements OnInit {
     this.board = this.gameService.makeBoard(10, 8, 8);
     this.gameService.startGame(this.board);
   }
+
+  clickTile(clickedTile) {
+    clickedTile.clicked = true;
+  }
 }

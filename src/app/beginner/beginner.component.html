@@ -1,1 +1,13 @@
 <h1>Beginner Difficulty</h1>
+<div class="center">
+  <div *ngFor="let row of board.grid">
+    <div class="game-row">
+      <div *ngFor="let tile of row">
+        <div *ngIf="!tile.clicked" class="btn btn-default game-button" (click)="clickTile(tile)">
+        </div>
+        <div *ngIf="tile.clicked" class="game-tile">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

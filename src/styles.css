@@ -1,1 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  font-size: 0!important;
+  line-height: 0!important; 
+}
+
+.game-row {
+  display: inline-flex;
+  margin: 0px;
+  padding: 0px;
+}
+
+.game-button {
+  height: 30px;
+  width: 30px;
+  border-radius: 0px;
+  background-color: darkgray;
+}
+
+.game-button:hover {
+  background-color: lightgray;
+}
+
+.game-tile {
+  margin: 0px;
+  height: 30px;
+  width: 30px;
+  background-color: red;
+  border: 1px solid purple;
+}
+
+.center {
+  text-align: center;
+}

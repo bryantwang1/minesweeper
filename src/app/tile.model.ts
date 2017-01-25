@@ -5,6 +5,7 @@ export class Tile {
   public mineNumber: number = 0;
   public yPos: number = -1;
   public xPos: number = -1;
+  public clicked: boolean = false;
 
   constructor(y: number, x: number) {
     this.yPos = y;
