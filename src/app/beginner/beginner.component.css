@@ -1,0 +1,15 @@
+@keyframes lightBlue {
+    from {background-color: deepskyblue;}
+    to {background-color: lightblue;}
+}
+
+body {
+  background-color: lightblue;
+  animation-name: lightBlue;
+  animation-duration: 2s;
+  padding: 6%;
+}
+
+h1 {
+  margin-top: -2%;
+}

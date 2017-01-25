@@ -1,7 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-  font-size: 0!important;
-  line-height: 0!important; 
+  font-size: 0;
+  line-height: 0;
+  background-color: deepskyblue;
+}
+
+h1 {
+  text-align: center;
 }
 
 .game-row {
@@ -15,18 +20,30 @@ body {
   width: 30px;
   border-radius: 0px;
   background-color: darkgray;
+  line-height: 15px;
+  font-size: 20px;
 }
 
 .game-button:hover {
-  background-color: lightgray;
+  background-color: gray;
 }
 
 .game-tile {
   margin: 0px;
   height: 30px;
   width: 30px;
-  background-color: red;
-  border: 1px solid purple;
+  background-color: lightgray;
+  border: 1px solid darkgray;
+  font-size: 18px;
+  color: red;
+}
+
+i {
+  margin: 6px;
+}
+
+.game-tile p {
+  line-height: 1.4em;
 }
 
 .center {

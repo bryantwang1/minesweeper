@@ -16,6 +16,8 @@ export class BeginnerComponent implements OnInit {
   ngOnInit() {
     this.board = this.gameService.makeBoard(10, 8, 8);
     this.gameService.startGame(this.board);
+    this.gameService.checkTiles(this.board);
+    console.log(this.board);
   }
 
   clickTile(clickedTile) {
