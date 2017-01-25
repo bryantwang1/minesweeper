@@ -19,7 +19,7 @@
       "mobile": false,
       "styles": [
         "styles.css",
-        "./bower_components/bootstrap/dist/css/bootstrap.css"
+        "../bower_components/bootstrap/dist/css/bootstrap.css"
       ],
       "scripts": [],
       "environments": {

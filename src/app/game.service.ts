@@ -1,37 +1,42 @@
 import { Injectable } from '@angular/core';
 import { Tile } from './tile.model';
+import { Board } from './board.model';
 
 @Injectable()
 export class GameService {
-  public board;
-  public time: number;
-  public clickNumber: number;
 
-  constructor(public mineNumber: number, public xSize: number, public ySize: number) {
-    this.board = new Array(ySize);
-    for(var y=0;y < ySize;y++) {
-      for(var x=0;x< xSize;x++) {
-        this.board[y].push(new Tile(y, x));
+  constructor() { }
+
+  makeBoard(mineNumber: number, ySize: number, xSize: number) {
+    return new Board(mineNumber, ySize, xSize);
+  }
+
+  startGame(board: Board) {
+    for(var y=0;y < board.ySize;y++) {
+      var newArray: Tile[] = [];
+      board.grid.push(newArray);
+      for(var x=0;x< board.xSize;x++) {
+        board.grid[y].push(new Tile(y, x));
       }
     }
+    this.placeMines(board);
   }
 
   getRandom(size: number) {
-    return Math.floor(Math.random() * (size + 1));
+    return Math.floor(Math.random() * size);
   }
 
-  placeMines() {
-    for(var i=0;i < this.mineNumber;i++) {
-      var randomY: number = this.getRandom(this.ySize);
-      var randomX: number = this.getRandom(this.xSize);
+  placeMines(board: Board) {
+    for(var i=0;i < board.mineNumber;i++) {
+      var randomY: number = this.getRandom(board.ySize);
+      var randomX: number = this.getRandom(board.xSize);
 
-      if(this.board[randomY][randomX].mineHere === false) {
-        this.board[randomY][randomX].mineHere = true;
+      if(board.grid[randomY][randomX].mineHere === false) {
+        board.grid[randomY][randomX].mineHere = true;
       } else {
         i--;
       }
     }
-
   }
 
 }
