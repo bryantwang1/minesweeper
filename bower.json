@@ -1,0 +1,21 @@
+{
+  "name": "minesweeper",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Bryant Wang <bryant.m.wang@gmail.com>",
+    "Kevin Finley <www.kfinley.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
