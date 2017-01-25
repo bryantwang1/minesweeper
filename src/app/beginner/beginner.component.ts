@@ -22,7 +22,7 @@ export class BeginnerComponent implements OnInit {
   }
 
   clickTile(clickedTile) {
-    clickedTile.clicked = true;
+    this.gameService.clickTile(clickedTile, this.board);
   }
 
   rightClick($event, clickedTile) {

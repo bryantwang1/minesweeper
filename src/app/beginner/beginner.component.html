@@ -8,7 +8,7 @@
             <div *ngIf="tile.flagHere"><i class="fa fa-flag" aria-hidden="true"></i></div>
             <div *ngIf="tile.questionHere"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
           </div>
-          <div *ngIf="tile.clicked" class="game-tile">
+          <div *ngIf="tile.clicked" class="game-tile" (click)="clickTile(tile)">
             <i class="fa fa-bomb" aria-hidden="true" *ngIf="tile.mineHere"></i>
             <div *ngIf="!tile.mineHere">
               <p *ngIf="tile.mineNumber > 0">
