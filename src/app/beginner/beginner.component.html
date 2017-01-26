@@ -13,13 +13,14 @@
           <p>{{board.mineNumber - board.flagNumber}}</p>
         </div>
         <div class="sidebar-detail">
-          <p>{{board.secondsElapsed}}s</p>
+          <p>{{board.secondsElapsed}}<span class="small-spacer"></span>s</p>
         </div>
+        <button class="btn" (click)="startGame()">Restart</button>
       </div>
 
       <div class="flexer-content">
         <div class="game-board">
-          <div *ngIf="!board.gameOver">
+          <div *ngIf="!board.gameOver && !board.gameWon">
             <div *ngFor="let row of board.grid">
               <div class="game-row">
                 <div *ngFor="let tile of row">
@@ -27,7 +28,7 @@
                     <div *ngIf="tile.flagHere"><i class="fa fa-flag" aria-hidden="true"></i></div>
                     <div *ngIf="tile.questionHere"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
                   </div>
-                  <div *ngIf="tile.clicked" class="game-tile" (click)="clickTile(tile)">
+                  <div *ngIf="tile.clicked" class="game-tile" (mouseup)="clickTile(tile)" (mousedown)="userClicking()">
                     <i class="fa fa-bomb" aria-hidden="true" *ngIf="tile.mineHere"></i>
                     <div *ngIf="!tile.mineHere">
                       <p *ngIf="tile.mineNumber > 0">
@@ -42,7 +43,7 @@
         </div>
 
         <div class="game-board">
-          <div *ngIf="board.gameOver">
+          <div *ngIf="board.gameOver || board.gameWon">
             <div *ngFor="let row of board.grid">
               <div class="game-row">
                 <div *ngFor="let tile of row">
@@ -71,8 +72,8 @@
                 </div>
               </div>
             </div>
-            <h5>Game over, man! Game over!</h5>
-            <button class="btn" routerLink="">Restart</button>
+            <h5 *ngIf="board.gameOver">Game over, man! Game over!</h5>
+            <h5 *ngIf="board.gameWon">You did it!</h5>
           </div>
         </div>
       </div>

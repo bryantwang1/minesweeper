@@ -89,12 +89,17 @@ export class GameService {
   }
 
   showTile(selectedTile: Tile, board: Board) {
+    if(!selectedTile.clicked) {
+      board.shownTileCounter++;
+    }
     selectedTile.clicked = true;
     selectedTile.flagHere = false;
     if(selectedTile.mineHere) {
       selectedTile.gameEnder = true;
       board.gameOver = true;
       this.endGame(board);
+    } else if(board.winningTileAmount === board.shownTileCounter) {
+      board.gameWon = true;
     }
   }
 
@@ -122,11 +127,13 @@ export class GameService {
 
 
   clickTile(clickedTile: Tile, board: Board) {
-    this.showTile(clickedTile, board);
-    this.revealSurroundings(clickedTile, board);
-    if(board.firstClick) {
-      board.firstClick = false;
-      this.gameTimer(board);
+    if(!clickedTile.flagHere) {
+      this.showTile(clickedTile, board);
+      this.revealSurroundings(clickedTile, board);
+      if(board.firstClick) {
+        board.firstClick = false;
+        this.gameTimer(board);
+      }
     }
   }
 

@@ -18,15 +18,13 @@ export class BeginnerComponent implements OnInit {
   constructor(private gameService: GameService) {  }
 
   ngOnInit() {
-    this.board = this.gameService.makeBoard(10, 8, 8);
-    this.gameService.startGame(this.board);
-    this.gameService.checkTiles(this.board);
-    console.log(this.board);
+    this.startGame();
   }
 
   clickTile(clickedTile: Tile) {
     this.board.clickNumber++;
     this.gameService.clickTile(clickedTile, this.board);
+    this.userClick = false;
   }
 
   userClicking() {
@@ -51,5 +49,12 @@ export class BeginnerComponent implements OnInit {
     } else if($event.which === 1) {
       this.clickTile(clickedTile);
     }
+  }
+
+  startGame() {
+    this.board = this.gameService.makeBoard(10, 8, 8);
+    this.gameService.startGame(this.board);
+    this.gameService.checkTiles(this.board);
+    console.log(this.board);
   }
 }
