@@ -16,7 +16,11 @@ export class GameComponent implements OnInit {
   gameOver: boolean = false;
   userClick: boolean = false;
   firstClick: boolean = true;
+  isCustom: boolean = false;
   difficulty;
+  customMines: number = 0;
+  customY: number = 0;
+  customX: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,7 +33,12 @@ export class GameComponent implements OnInit {
       this.difficulty = urlParams['difficulty'];
     });
     console.log(this.difficulty);
-    this.startGame();
+    if(this.difficulty !== 'Custom'){
+      this.startGame(false);
+    } else {
+      this.startGame(true);
+      this.isCustom = true;
+    }
   }
 
   clickTile(clickedTile: Tile) {
@@ -62,16 +71,22 @@ export class GameComponent implements OnInit {
     }
   }
 
-  startGame() {
-    if(this.difficulty === 'Beginner') {
-      this.board = this.gameService.makeBoard(10, 8, 8);
-    } else if(this.difficulty === 'Intermediate') {
-      this.board = this.gameService.makeBoard(40, 16, 16);
-    } else if(this.difficulty === 'Advanced') {
-      this.board = this.gameService.makeBoard(99, 24, 24);
+  startGame(custom: boolean) {
+    if(custom) {
+      this.customMines = (this.customMines > 200) ? 200 : this.customMines;
+      this.customY = (this.customY > 300) ? 300 : this.customY;
+      this.customX = (this.customX > 300) ? 300 : this.customX;
+      this.board = this.gameService.makeBoard(this.customMines, this.customY, this.customX);
+    } else {
+      if(this.difficulty === 'Beginner') {
+        this.board = this.gameService.makeBoard(10, 8, 8);
+      } else if(this.difficulty === 'Intermediate') {
+        this.board = this.gameService.makeBoard(40, 16, 16);
+      } else if(this.difficulty === 'Advanced') {
+        this.board = this.gameService.makeBoard(99, 24, 24);
+      }
     }
     this.gameService.startGame(this.board);
     this.gameService.checkTiles(this.board);
-    console.log(this.board);
   }
 }

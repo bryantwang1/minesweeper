@@ -35,15 +35,21 @@ export class GameService {
   }
 
   placeMines(board: Board) {
-    for(var i=0;i < board.mineNumber;i++) {
-      var randomY: number = this.getRandom(board.ySize);
-      var randomX: number = this.getRandom(board.xSize);
+    var boardSize: number = board.ySize * board.xSize;
 
-      if(board.grid[randomY][randomX].mineHere === false) {
-        board.grid[randomY][randomX].mineHere = true;
-      } else {
-        i--;
+    if(board.mineNumber <= boardSize) {
+      for(var i=0;i < board.mineNumber;i++) {
+        var randomY: number = this.getRandom(board.ySize);
+        var randomX: number = this.getRandom(board.xSize);
+
+        if(board.grid[randomY][randomX].mineHere === false) {
+          board.grid[randomY][randomX].mineHere = true;
+        } else {
+          i--;
+        }
       }
+    } else {
+      console.log("user attempted to place too many mines: " + board.mineNumber);
     }
   }
 

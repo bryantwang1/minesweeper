@@ -27,6 +27,14 @@ h5 {
   text-align: center;
 }
 
+.sidebar input {
+  width: 50px;
+}
+
+.sidebar label {
+  line-height: 1em;
+}
+
 .flexer {
   display: flex;
 }
@@ -41,7 +49,6 @@ h5 {
 }
 
 .sidebar {
-  height: 200px;
   background-color: gray;
   flex: 0 0 100px;
   font-size: 16px;
@@ -64,6 +71,10 @@ h5 {
   color: white;
   font-size: 30px;
   margin-top: 1vh;
+}
+
+.sidebar button {
+  margin-bottom: 15%;
 }
 
 .small-spacer {
