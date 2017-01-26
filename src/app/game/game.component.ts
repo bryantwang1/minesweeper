@@ -73,9 +73,9 @@ export class GameComponent implements OnInit {
 
   startGame(custom: boolean) {
     if(custom) {
-      this.customMines = (this.customMines > 200) ? 200 : this.customMines;
-      this.customY = (this.customY > 300) ? 300 : this.customY;
-      this.customX = (this.customX > 300) ? 300 : this.customX;
+      this.customMines = (this.customMines > 450) ? 450 : this.customMines;
+      this.customY = (this.customY > 50) ? 50 : this.customY;
+      this.customX = (this.customX > 50) ? 50 : this.customX;
       this.board = this.gameService.makeBoard(this.customMines, this.customY, this.customX);
     } else {
       if(this.difficulty === 'Beginner') {

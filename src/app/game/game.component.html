@@ -19,15 +19,15 @@
         <div *ngIf="isCustom">
           <div class="form-group">
             <label for>Mines: </label>
-            <input (input)="customMines = $event.target.value" type="number">
+            <input (input)="customMines = $event.target.value" type="number" placeholder="450">
           </div>
           <div class="form-group">
             <label for>Height: </label>
-            <input (input)="customY = $event.target.value" type="number">
+            <input (input)="customY = $event.target.value" type="number" placeholder="50">
           </div>
           <div class="form-group">
             <label for>Width: </label>
-            <input (input)="customX = $event.target.value" type="number">
+            <input (input)="customX = $event.target.value" type="number" placeholder="50">
           </div>
         </div>
       </div>

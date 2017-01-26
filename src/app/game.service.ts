@@ -72,7 +72,7 @@ export class GameService {
   endGame(board: Board) {
     for(let row of board.grid) {
       for(let tile of row) {
-        if(tile.mineHere) {
+        if(tile.mineHere && !tile.flagHere) {
           tile.clicked = true;
         }
       }
