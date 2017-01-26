@@ -1,5 +1,5 @@
 <h1>Let's Play!</h1>
 <h3>Choose a Difficulty: </h3>
-<button class="btn btn-success" routerLink="beginner">Beginner</button>
-<button class="btn btn-warning" routerLink="intermediate">Intermediate</button>
-<button class="btn btn-danger" routerLink="advanced">Advanced</button>
+<button class="btn btn-success" (click)="goToPreset('beginner')">Beginner</button>
+<button class="btn btn-warning" (click)="goToPreset('intermediate')">Intermediate</button>
+<button class="btn btn-danger" (click)="goToPreset('advanced')">Advanced</button>

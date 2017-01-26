@@ -11,16 +11,8 @@ const appRoutes: Routes = [
   component: StartComponent
 },
 {
-  path: 'beginner',
+  path: 'beginner/:difficulty',
   component: BeginnerComponent
-},
-{
-  path: 'intermediate',
-  component: IntermediateComponent
-},
-{
-  path: 'advanced',
-  component: AdvancedComponent
 }
 ];
 

@@ -1,7 +1,6 @@
 <body oncontextmenu="return false">
   <h1>Beginner Difficulty</h1>
   <div class="center">
-    <h2># of clicks: {{board.clickNumber}}</h2>
     <div class="inline-flexer">
       <div class="sidebar">
         <i class="fa fa-meh-o" aria-hidden="true" *ngIf="userClick"></i>
@@ -74,6 +73,7 @@
             </div>
             <h5 *ngIf="board.gameOver">Game over, man! Game over!</h5>
             <h5 *ngIf="board.gameWon">You did it!</h5>
+            <h2 *ngIf="board.gameOver || board.gameWon">You clicked {{board.clickNumber}} times.</h2>
           </div>
         </div>
       </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
 import { GameService } from './../game.service';
 import { Board } from './../board.model';
 import { Tile } from './../tile.model';
@@ -14,10 +16,19 @@ export class BeginnerComponent implements OnInit {
   gameOver: boolean = false;
   userClick: boolean = false;
   firstClick: boolean = true;
+  difficulty;
 
-  constructor(private gameService: GameService) {  }
+  constructor(
+    private route: ActivatedRoute,
+    private location: Location,
+    private gameService: GameService
+  ) {  }
 
   ngOnInit() {
+    this.route.params.forEach((urlParams) => {
+      this.difficulty = urlParams['difficulty'];
+    });
+    console.log(this.difficulty);
     this.startGame();
   }
 
@@ -52,7 +63,13 @@ export class BeginnerComponent implements OnInit {
   }
 
   startGame() {
-    this.board = this.gameService.makeBoard(10, 8, 8);
+    if(this.difficulty === 'beginner') {
+      this.board = this.gameService.makeBoard(10, 8, 8);
+    } else if(this.difficulty === 'intermediate') {
+      this.board = this.gameService.makeBoard(40, 16, 16);
+    } else if(this.difficulty === 'advanced') {
+      this.board = this.gameService.makeBoard(99, 24, 24);
+    }
     this.gameService.startGame(this.board);
     this.gameService.checkTiles(this.board);
     console.log(this.board);
