@@ -3,7 +3,7 @@
   <div class="center">
     <h2># of clicks: {{board.clickNumber}}</h2>
 
-    <div *ngIf="!gameOver">
+    <div *ngIf="!board.gameOver">
       <div *ngFor="let row of board.grid">
         <div class="game-row">
           <div *ngFor="let tile of row">
@@ -24,8 +24,7 @@
       </div>
     </div>
 
-    <div *ngIf="gameOver">
-      <h1>Game over, man! Game over!</h1>
+    <div *ngIf="board.gameOver">
       <div *ngFor="let row of board.grid">
         <div class="game-row">
           <div *ngFor="let tile of row">
@@ -50,12 +49,13 @@
                   {{tile.mineNumber}}
                 </p>
               </div>
-
             </div>
-
           </div>
         </div>
       </div>
+      <h5>Game over, man! Game over!</h5>
+      <button class="btn" routerLink="">Restart</button>
+
     </div>
   </div>
 </body>

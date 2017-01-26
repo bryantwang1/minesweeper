@@ -25,11 +25,6 @@ export class BeginnerComponent implements OnInit {
   clickTile(clickedTile: Tile) {
     this.board.clickNumber++;
     this.gameService.clickTile(clickedTile, this.board);
-    if(clickedTile.mineHere) {
-      clickedTile.gameEnder = true;
-      this.gameOver = true;
-      this.gameService.endGame(this.board);
-    }
   }
 
   mouseClick($event, clickedTile: Tile) {

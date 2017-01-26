@@ -9,6 +9,10 @@ h1 {
   text-align: center;
 }
 
+h5 {
+  font-size: 36px;
+}
+
 .game-row {
   display: inline-flex;
   margin: 0px;
