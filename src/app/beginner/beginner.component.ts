@@ -38,7 +38,9 @@ export class BeginnerComponent implements OnInit {
       this.board.clickNumber++;
       if(!clickedTile.flagHere && !clickedTile.questionHere) {
         clickedTile.flagHere = true;
+        this.board.flagNumber++;
       } else if(clickedTile.flagHere === true && !clickedTile.questionHere) {
+        this.board.flagNumber--;
         clickedTile.flagHere = false;
         clickedTile.questionHere = true;
       } else {

@@ -52,6 +52,10 @@ h5 {
   margin-top: 25%;
 }
 
+.sidebar-detail p {
+  line-height: 2em;
+}
+
 .sidebar i {
   color: white;
   font-size: 30px;
