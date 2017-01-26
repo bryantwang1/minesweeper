@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService } from './../game.service';
 import { Board } from './../board.model';
+import { Tile } from './../tile.model';
 
 @Component({
   selector: 'app-beginner',
@@ -21,7 +22,8 @@ export class BeginnerComponent implements OnInit {
     console.log(this.board);
   }
 
-  clickTile(clickedTile) {
+  clickTile(clickedTile: Tile) {
+    this.board.clickNumber++;
     this.gameService.clickTile(clickedTile, this.board);
     if(clickedTile.mineHere) {
       clickedTile.gameEnder = true;
@@ -30,17 +32,20 @@ export class BeginnerComponent implements OnInit {
     }
   }
 
-  rightClick($event, clickedTile) {
-     if($event.which === 3) {
-       if(!clickedTile.flagHere && !clickedTile.questionHere) {
-         clickedTile.flagHere = true;
-       } else if(clickedTile.flagHere === true && !clickedTile.questionHere) {
-         clickedTile.flagHere = false;
-         clickedTile.questionHere = true;
-       } else {
-         clickedTile.flagHere = false;
-         clickedTile.questionHere = false;
-       }
-     }
+  mouseClick($event, clickedTile: Tile) {
+    if($event.which === 3) {
+      this.board.clickNumber++;
+      if(!clickedTile.flagHere && !clickedTile.questionHere) {
+        clickedTile.flagHere = true;
+      } else if(clickedTile.flagHere === true && !clickedTile.questionHere) {
+        clickedTile.flagHere = false;
+        clickedTile.questionHere = true;
+      } else {
+        clickedTile.flagHere = false;
+        clickedTile.questionHere = false;
+      }
+    } else if($event.which === 1) {
+      this.clickTile(clickedTile);
+    }
   }
 }

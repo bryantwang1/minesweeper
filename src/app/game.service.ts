@@ -93,6 +93,7 @@ export class GameService {
             if(!board.grid[i][d].mineHere) {
               console.log("enter crazier");
               board.grid[i][d].clicked = true;
+              board.grid[i][d].flagHere = false;
             }
           }
         }
@@ -107,6 +108,7 @@ export class GameService {
   clickTile(clickedTile: Tile, board: Board) {
     if(!clickedTile.clicked) {
       clickedTile.clicked = true;
+      clickedTile.flagHere = false;
     } else {
       if(!clickedTile.mineHere && clickedTile.clicked) {
         var checkTiles: Tile[] = [];
@@ -120,6 +122,7 @@ export class GameService {
                 if(!board.grid[i][d].mineHere) {
                   console.log("enter craziest");
                   board.grid[i][d].clicked = true;
+                  board.grid[i][d].flagHere = false;
                 }
               }
             }

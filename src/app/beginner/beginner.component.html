@@ -1,12 +1,13 @@
 <body oncontextmenu="return false">
   <h1>Beginner Difficulty</h1>
   <div class="center">
+    <h2># of clicks: {{board.clickNumber}}</h2>
 
     <div *ngIf="!gameOver">
       <div *ngFor="let row of board.grid">
         <div class="game-row">
           <div *ngFor="let tile of row">
-            <div *ngIf="!tile.clicked" class="btn btn-default game-button" (click)="clickTile(tile)" (mouseup)="rightClick($event, tile)">
+            <div *ngIf="!tile.clicked" class="btn btn-default game-button" (mouseup)="mouseClick($event, tile)">
               <div *ngIf="tile.flagHere"><i class="fa fa-flag" aria-hidden="true"></i></div>
               <div *ngIf="tile.questionHere"><i class="fa fa-question-circle-o" aria-hidden="true"></i></div>
             </div>
