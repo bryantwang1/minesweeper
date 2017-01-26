@@ -13,6 +13,51 @@ h5 {
   font-size: 36px;
 }
 
+.inline-flexer {
+  display: inline-flex;
+  width: 100%;
+  flex: 1;
+}
+
+.game-board {
+  text-align: center;
+}
+
+.flexer {
+  display: flex;
+}
+
+.flexer-content {
+  flex: 1;
+}
+
+.flexer-right-filler {
+  flex: 0 0 100px;
+  height: 100%;
+}
+
+.sidebar {
+  height: 15vh;
+  background-color: gray;
+  flex: 0 0 100px;
+  font-size: 16px;
+}
+
+.sidebar-detail {
+  background-color: black;
+  color: white;
+  height: 35px;
+  width: 80%;
+  margin: 10%;
+  margin-top: 25%;
+}
+
+.sidebar i {
+  color: white;
+  font-size: 30px;
+  margin-top: 1vh;
+}
+
 .game-row {
   display: inline-flex;
   margin: 0px;

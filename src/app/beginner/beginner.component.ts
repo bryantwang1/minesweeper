@@ -12,6 +12,7 @@ import { Tile } from './../tile.model';
 export class BeginnerComponent implements OnInit {
   board: Board;
   gameOver: boolean = false;
+  userClick: boolean = false;
 
   constructor(private gameService: GameService) { }
 
@@ -27,7 +28,12 @@ export class BeginnerComponent implements OnInit {
     this.gameService.clickTile(clickedTile, this.board);
   }
 
+  userClicking() {
+    this.userClick = true;
+  }
+
   mouseClick($event, clickedTile: Tile) {
+    this.userClick = false;
     if($event.which === 3) {
       this.board.clickNumber++;
       if(!clickedTile.flagHere && !clickedTile.questionHere) {
