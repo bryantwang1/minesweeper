@@ -77,7 +77,6 @@ export class GameService {
         }
       }
     }
-
     return flagCount;
   }
 
@@ -93,12 +92,19 @@ export class GameService {
 
   revealSurroundings(clickedTile: Tile, board: Board) {
     var flagCount: number = this.countFlags(clickedTile, board);
+
     if(clickedTile.mineNumber === flagCount) {
       for(var i=clickedTile.yPos-1;i<clickedTile.yPos+2;i++) {
         for(var d=clickedTile.xPos-1;d<clickedTile.xPos+2;d++) {
           if(i >= 0 && d >= 0 && i <= board.ySize-1 && d <= board.xSize-1) {
             if(!board.grid[i][d].flagHere) {
               this.showTile(board.grid[i][d], board);
+              if(board.grid[i][d].mineNumber === 0) {
+                if(board.checkedTiles.indexOf(board.grid[i][d]) < 0) {
+                  board.checkedTiles.push(board.grid[i][d]);
+                  this.revealSurroundings(board.grid[i][d], board);
+                }
+              }
             }
           }
         }
@@ -106,21 +112,10 @@ export class GameService {
     }
   }
 
-  // if(board.grid[i][d].mineNumber === 0) {
-  //   checkTiles.push(board.grid[i][d]);
-  // }
 
   clickTile(clickedTile: Tile, board: Board) {
-    if(!clickedTile.clicked) {
-      this.showTile(clickedTile, board);
-    } else {
-      if(!clickedTile.mineHere && clickedTile.clicked) {
-        var checkTiles: Tile[] = [];
-        console.log("enter click");
-        this.revealSurroundings(clickedTile, board);
-        console.log("crazy arrays: " + checkTiles);
-      }
-    }
+    this.showTile(clickedTile, board);
+    this.revealSurroundings(clickedTile, board);
   }
 
 }

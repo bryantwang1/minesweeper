@@ -3,6 +3,7 @@ export class Board {
   public time: number;
   public clickNumber: number = 0;
   public gameOver: boolean = false;
+  public checkedTiles: any[] = [];
 
 
   constructor(public mineNumber: number, public xSize: number, public ySize: number) {}
