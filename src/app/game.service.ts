@@ -26,6 +26,14 @@ export class GameService {
     return Math.floor(Math.random() * size);
   }
 
+  gameTimer(board: Board) {
+    setInterval(function() {
+      if(!board.gameOver) {
+        board.secondsElapsed++;
+      }
+    }, 1000)
+  }
+
   placeMines(board: Board) {
     for(var i=0;i < board.mineNumber;i++) {
       var randomY: number = this.getRandom(board.ySize);
@@ -116,6 +124,10 @@ export class GameService {
   clickTile(clickedTile: Tile, board: Board) {
     this.showTile(clickedTile, board);
     this.revealSurroundings(clickedTile, board);
+    if(board.firstClick) {
+      board.firstClick = false;
+      this.gameTimer(board);
+    }
   }
 
 }

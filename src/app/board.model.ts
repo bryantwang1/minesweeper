@@ -5,6 +5,8 @@ export class Board {
   public gameOver: boolean = false;
   public checkedTiles: any[] = [];
   public flagNumber: number = 0;
+  public secondsElapsed: number = 0;
+  public firstClick: boolean = true;
 
 
   constructor(public mineNumber: number, public xSize: number, public ySize: number) {}

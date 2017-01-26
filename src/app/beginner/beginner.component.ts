@@ -13,8 +13,9 @@ export class BeginnerComponent implements OnInit {
   board: Board;
   gameOver: boolean = false;
   userClick: boolean = false;
+  firstClick: boolean = true;
 
-  constructor(private gameService: GameService) { }
+  constructor(private gameService: GameService) {  }
 
   ngOnInit() {
     this.board = this.gameService.makeBoard(10, 8, 8);
