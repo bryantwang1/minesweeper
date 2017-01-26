@@ -6,17 +6,13 @@ import { routing } from './app.routing';
 
 import { AppComponent } from './app.component';
 import { StartComponent } from './start/start.component';
-import { BeginnerComponent } from './beginner/beginner.component';
-import { IntermediateComponent } from './intermediate/intermediate.component';
-import { AdvancedComponent } from './advanced/advanced.component';
+import { GameComponent } from './game/game.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StartComponent,
-    BeginnerComponent,
-    IntermediateComponent,
-    AdvancedComponent
+    GameComponent
   ],
   imports: [
     BrowserModule,

@@ -14,7 +14,7 @@ export class StartComponent implements OnInit {
   }
 
   goToPreset(difficulty: string) {
-    this.router.navigate(['beginner', difficulty]);
+    this.router.navigate(['game', difficulty]);
   }
 
 }

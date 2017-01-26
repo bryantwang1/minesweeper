@@ -1,9 +1,7 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { StartComponent } from './start/start.component';
-import { BeginnerComponent } from './beginner/beginner.component';
-import { IntermediateComponent } from './intermediate/intermediate.component';
-import { AdvancedComponent } from './advanced/advanced.component';
+import { GameComponent } from './game/game.component';
 
 const appRoutes: Routes = [
 {
@@ -11,8 +9,8 @@ const appRoutes: Routes = [
   component: StartComponent
 },
 {
-  path: 'beginner/:difficulty',
-  component: BeginnerComponent
+  path: 'game/:difficulty',
+  component: GameComponent
 }
 ];
 

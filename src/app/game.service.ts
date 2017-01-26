@@ -28,7 +28,7 @@ export class GameService {
 
   gameTimer(board: Board) {
     setInterval(function() {
-      if(!board.gameOver) {
+      if(!board.gameOver && !board.gameWon) {
         board.secondsElapsed++;
       }
     }, 1000)

@@ -6,12 +6,12 @@ import { Board } from './../board.model';
 import { Tile } from './../tile.model';
 
 @Component({
-  selector: 'app-beginner',
-  templateUrl: './beginner.component.html',
-  styleUrls: ['./beginner.component.css'],
+  selector: 'app-game',
+  templateUrl: './game.component.html',
+  styleUrls: ['./game.component.css'],
   providers: [GameService]
 })
-export class BeginnerComponent implements OnInit {
+export class GameComponent implements OnInit {
   board: Board;
   gameOver: boolean = false;
   userClick: boolean = false;
@@ -63,11 +63,11 @@ export class BeginnerComponent implements OnInit {
   }
 
   startGame() {
-    if(this.difficulty === 'beginner') {
+    if(this.difficulty === 'Beginner') {
       this.board = this.gameService.makeBoard(10, 8, 8);
-    } else if(this.difficulty === 'intermediate') {
+    } else if(this.difficulty === 'Intermediate') {
       this.board = this.gameService.makeBoard(40, 16, 16);
-    } else if(this.difficulty === 'advanced') {
+    } else if(this.difficulty === 'Advanced') {
       this.board = this.gameService.makeBoard(99, 24, 24);
     }
     this.gameService.startGame(this.board);
