@@ -1,9 +1,11 @@
 <h1>Let's Play!</h1>
 <div class="centerer">
-  <h3>Choose a Difficulty: </h3>
-  <button class="btn btn-success" (click)="goToPreset('Beginner')">Beginner</button>
-  <button class="btn btn-warning" (click)="goToPreset('Intermediate')">Intermediate</button>
-  <button class="btn btn-danger" (click)="goToPreset('Advanced')">Advanced</button>
+  <h3>Enter Your Name:</h3>
+  <input type="text" #playerName>
+  <h3>And Choose a Difficulty: </h3>
+  <button class="btn btn-success" (click)="goToGame('Beginner', playerName.value)">Beginner</button>
+  <button class="btn btn-warning" (click)="goToGame('Intermediate', playerName.value)">Intermediate</button>
+  <button class="btn btn-danger" (click)="goToGame('Advanced', playerName.value)">Advanced</button>
   <br>
-  <button class="btn btn-primary" (click)="goToPreset('Custom')">Custom</button>
+  <button class="btn btn-primary" (click)="goToGame('Custom', playerName.value)">Custom</button>
 </div>

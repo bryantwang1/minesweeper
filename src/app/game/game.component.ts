@@ -32,7 +32,7 @@ export class GameComponent implements OnInit {
     this.route.params.forEach((urlParams) => {
       this.difficulty = urlParams['difficulty'];
     });
-    console.log(this.difficulty);
+    GameService.updatePlayer(this.difficulty);
     if(this.difficulty !== 'Custom'){
       this.startGame(false);
     } else {

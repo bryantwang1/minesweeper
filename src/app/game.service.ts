@@ -1,14 +1,41 @@
 import { Injectable } from '@angular/core';
 import { Tile } from './tile.model';
 import { Board } from './board.model';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { Player } from './player.model';
 
 @Injectable()
 export class GameService {
+  static currentPlayer: Player;
+  static topPlayers: FirebaseListObservable<any[]>;
 
-  constructor() { }
+  constructor(private angularFire: AngularFire) {
+    GameService.topPlayers = angularFire.database.list('players');
+  }
 
   makeBoard(mineNumber: number, ySize: number, xSize: number) {
     return new Board(mineNumber, ySize, xSize);
+  }
+
+  static createPlayer(name: string) {
+    GameService.currentPlayer = new Player(name);
+  }
+
+  static updatePlayer(setDifficulty: string) {
+    if(typeof GameService.currentPlayer !== 'Player') {
+      GameService.currentPlayer = new Player('');
+    }
+
+    GameService.currentPlayer.difficulty = setDifficulty;
+  }
+
+  static savePlayer(board: Board) {
+    GameService.currentPlayer.time = board.secondsElapsed;
+    GameService.currentPlayer.clicks = board.clickNumber;
+    GameService.currentPlayer.mines = board.mineNumber;
+    GameService.currentPlayer.height = board.ySize;
+    GameService.currentPlayer.width = board.xSize;
+    GameService.topPlayers.push(GameService.currentPlayer);
   }
 
   startGame(board: Board) {
@@ -109,6 +136,12 @@ export class GameService {
     }
   }
 
+  checkWin(board: Board) {
+    if(board.gameWon) {
+      GameService.savePlayer(board);
+    }
+  }
+
   revealSurroundings(clickedTile: Tile, board: Board) {
     var flagCount: number = this.countFlags(clickedTile, board);
 
@@ -128,6 +161,7 @@ export class GameService {
           }
         }
       }
+      this.checkWin(board);
     }
   }
 

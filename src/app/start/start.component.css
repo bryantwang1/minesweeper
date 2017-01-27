@@ -1,3 +1,10 @@
 button {
   margin: 50px;
 }
+
+input {
+  height: 30px;
+  width: 200px;
+  font-size: 20px;
+  text-align: center;
+}

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Player } from './../player.model';
+import { GameService } from './../game.service';
 
 @Component({
   selector: 'app-start',
@@ -13,7 +15,8 @@ export class StartComponent implements OnInit {
   ngOnInit() {
   }
 
-  goToPreset(difficulty: string) {
+  goToGame(difficulty: string, name: string) {
+    GameService.createPlayer(name);
     this.router.navigate(['game', difficulty]);
   }
 
