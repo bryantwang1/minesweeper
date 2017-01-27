@@ -21,6 +21,7 @@ export class GameComponent implements OnInit {
   customMines: number = 0;
   customY: number = 0;
   customX: number = 0;
+  players;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,6 +40,7 @@ export class GameComponent implements OnInit {
       this.startGame(true);
       this.isCustom = true;
     }
+    this.players = this.gameService.getPlayers();
   }
 
   clickTile(clickedTile: Tile) {

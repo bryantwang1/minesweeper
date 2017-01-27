@@ -93,8 +93,19 @@
         </div>
       </div>
 
-      <div class="flexer-right-filler">
-
+      <div class="scoreboard">
+        <h5>Scores</h5>
+        <div *ngFor="let player of players | async">
+          <h5>Name: {{player.name}}</h5>
+          <p>Difficulty: {{player.difficulty}}</p>
+          <p>Time: {{player.time}} seconds</p>
+          <p>Clicks: {{player.clicks}}</p>
+          <div *ngIf="player.difficulty === 'Custom'">
+            <p>Mines: {{player.mines}}</p>
+            <p>Height: {{player.height}}</p>
+            <p>Width: {{player.width}}</p>
+          </div>
+        </div>
       </div>
 
     </div>

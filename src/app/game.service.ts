@@ -17,12 +17,16 @@ export class GameService {
     return new Board(mineNumber, ySize, xSize);
   }
 
+  getPlayers() {
+    return GameService.topPlayers;
+  }
+
   static createPlayer(name: string) {
     GameService.currentPlayer = new Player(name);
   }
 
   static updatePlayer(setDifficulty: string) {
-    if(typeof GameService.currentPlayer !== 'Player') {
+    if(typeof GameService.currentPlayer !== 'object') {
       GameService.currentPlayer = new Player('');
     }
 

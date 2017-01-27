@@ -43,14 +43,30 @@ h5 {
   flex: 1;
 }
 
-.flexer-right-filler {
-  flex: 0 0 100px;
+.scoreboard {
+  flex: 0 0 150px;
   height: 100%;
+  background-color: gray;
+  color: white;
+  line-height: .5em;
+  padding: 5px;
+}
+
+.scoreboard h5 {
+  margin: 0;
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+
+.scoreboard p {
+  font-size: 12px;
+  line-height: 1em;
 }
 
 .sidebar {
   background-color: gray;
-  flex: 0 0 100px;
+  flex: 0 0 150px;
   font-size: 16px;
 }
 
