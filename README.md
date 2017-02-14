@@ -1,6 +1,25 @@
 # Minesweeper
 
+#### _Minesweeper Clone, 2017_
+
+#### By _**Bryant Wang**_
+
+## Description
+
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.26.
+
+A minecraft clone made to practice using Angular 2.
+
+## GitHub Pages Link
+https://bryantwang1.github.io/minesweeper/
+
+## Known Bugs
+
+Scoreboard doesn't quite work properly.
+
+##  Technologies Used
+
+Typescript, Angular 2
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
